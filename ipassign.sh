@@ -204,8 +204,8 @@ function get_cidrs() {
       fi
     fi
 
-    if [ $(cat $filename | grep -E 'b. \[Network Name\]' | /usr/bin/grep 'SUBA' | wc -l) -ne 0 ]; then
-      if [ $(cat $filename | grep -E 'a. \[Network Number\]' | /usr/bin/grep $cidr | wc -l) -gt 0 ]; then
+    if [ $(cat $filename | grep -E 'b. \[Network Name\]' | grep 'SUBA' | wc -l) -ne 0 ]; then
+      if [ $(cat $filename | grep -E 'a. \[Network Number\]' | grep $cidr | wc -l) -gt 0 ]; then
         user_prefixes=(
             $(/bin/cat $filename | \
             sed -n -e "/More Specific Info./,$(cat $filename | wc -l)p" | \
